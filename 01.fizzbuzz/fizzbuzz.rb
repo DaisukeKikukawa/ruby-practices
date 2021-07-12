@@ -1,4 +1,4 @@
-for i in 1..20
+(1..20).each{ |i|
 
   if i%3==0 && i%5==0
     puts "FizzBuzz"
@@ -9,4 +9,5 @@ for i in 1..20
   else
     puts i
   end
-end
+
+}
