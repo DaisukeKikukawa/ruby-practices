@@ -31,21 +31,8 @@ print wdays
 
 puts " "
 
-if firstDate.day == 1 && firstDate.wday == 0
-    print ""
-  elsif firstDate.day == 1 && firstDate.wday == 1
-    print "   "
-  elsif firstDate.day == 1 && firstDate.wday == 2
-    print "      "
-  elsif firstDate.day == 1 && firstDate.wday == 3
-    print "         "
-  elsif firstDate.day == 1 && firstDate.wday == 4
-    print "            "
-  elsif firstDate.day == 1 && firstDate.wday == 5
-    print "               "
-  elsif firstDate.day == 1 && firstDate.wday == 6
-      print "                  "
-  else
+if firstDate.day == 1
+  print " " * 3 * firstDate.wday
 end
 
 
