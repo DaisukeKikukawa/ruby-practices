@@ -22,7 +22,7 @@ lastDate = Date.new(year,month,-1)
 
 month = firstDate.month
 year = firstDate.year
-print "#{month}月 #{year}年"
+print "#{month}月 #{year}年".center(20)
 
 puts " "
 
@@ -54,13 +54,19 @@ end
 
 (firstDate .. lastDate).each { |date|
 
-  if date.wday == 6
+  if date.wday == 6 && date.day.to_s.length == 1
+    print " "
+    print date.day
+    puts ""
+
+  elsif date.wday == 6
     print date.day
     puts ""
 
   elsif date.day.to_s.length == 1
+    print " "
     print date.day
-    print "  "
+    print " "
 
   else
     print date.day
