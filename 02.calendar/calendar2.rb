@@ -35,9 +35,7 @@ if firstDate.day == 1
   print " " * 3 * firstDate.wday
 end
 
-
-(firstDate .. lastDate).each { |date|
-
+(firstDate .. lastDate).each do |date|
   if date.wday == 6 && date.day.to_s.length == 1
     print " "
     print date.day
@@ -56,5 +54,4 @@ end
     print date.day
     print " "
   end
-
-}
+end
