@@ -26,11 +26,8 @@ print "#{month}月 #{year}年".center(20)
 
 puts " "
 
-wdays = ["日","月","火","水","木","金","土"]
-(0..6).each {|i|
-  print wdays[i]
-  print " "
-}
+wdays = ["日","月","火","水","木","金","土"].join(" ")
+print wdays
 
 puts " "
 
