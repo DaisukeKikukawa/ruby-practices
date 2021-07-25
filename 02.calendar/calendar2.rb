@@ -34,19 +34,11 @@ if firstDate.day == 1
 end
 
 (firstDate..lastDate).each do |date|
-  if date.wday == 6 && date.day.to_s.length == 1
-    print " "
-    print date.day
-    puts ""
-  elsif date.wday == 6
-    print date.day
-    puts ""
-  elsif date.day.to_s.length == 1
-    print " "
-    print date.day
-    print " "
-  else
-    print date.day
-    print " "
+  print "#{date.day.to_s.rjust(2)} "
+  if date.wday == 6
+    puts " "
+  end
+  if date.day == lastDate.day
+    puts " "
   end
 end
