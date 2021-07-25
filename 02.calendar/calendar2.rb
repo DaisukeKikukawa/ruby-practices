@@ -3,17 +3,15 @@ require 'optparse'
 
 opt = OptionParser.new
 params = ARGV.getopts("y:", "m:")
-if params["y"] == nil && params["m"] == nil
+if params["y"] == nil
   year = Date.today.year
-  month = Date.today.month
-elsif params["y"] == nil
-  year = Date.today.year
-  month = params["m"].to_i
-elsif params["m"] == nil
-  year = params["y"].to_i
-  month = Date.today.month
 else
   year = params["y"].to_i
+end
+
+if params["m"] == nil
+  month = Date.today.month
+else
   month = params["m"].to_i
 end
 
