@@ -30,8 +30,6 @@ end
 
 point += if frames[9][0] == 10 && frames[10][0] == 10
            frames[9].sum + frames[10].sum + frames[11].sum
-         elsif (frames[9][0] == 10 && frames[10][0] != 10) || frames[9].sum == 10
-           frames[9].sum + frames[10].sum
          else
            frames[9].sum
          end
