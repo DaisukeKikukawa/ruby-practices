@@ -28,10 +28,8 @@ frames[0..8].each_with_index do |frame, i|
            end
 end
 
-point += if frames[9][0] == 10 && frames[10][0] == 10
-           frames[9].sum + frames[10].sum + frames[11].sum
-         else
-           frames[9].sum
-         end
+frames[9..11].each_with_index do |frame, i|
+  point += frame.sum
+end
 
 puts point
