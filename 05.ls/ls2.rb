@@ -4,6 +4,7 @@ require 'optparse'
 require 'etc'
 options = ARGV.getopts('a', 'l', 'r')
 
+
 DividedIntoThree = 3
 
 def print_three_column(files)
