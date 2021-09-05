@@ -79,13 +79,15 @@ def lists_mode(mode)
   }[mode.to_sym]
 end
 
-files = if options['a']
-          Dir.glob('*', File::FNM_DOTMATCH).sort
-        else
-          Dir.glob('*').sort
-        end
+if options['a']
+  files = Dir.glob('*', File::FNM_DOTMATCH).sort
+else
+  files = Dir.glob('*').sort
+end
 
-files = files.reverse if options['r']
+if options['r']
+  files = files.reverse
+end
 
 if options['l']
   l_option(files)
