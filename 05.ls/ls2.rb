@@ -4,26 +4,27 @@ require 'optparse'
 require 'etc'
 options = ARGV.getopts('a', 'l', 'r')
 
+DividedIntoThree = 3
+
 def print_three_column(files)
-  if (files.size % 3).zero?
-    slice_number = files.size / 3 + 1
-  else
-    slice_number = files.size / 3 + files.size % 3
-  end
+  slice_number = if (files.size % DividedIntoThree).zero?
+                   files.size / DividedIntoThree + 1
+                 else
+                   files.size / DividedIntoThree + files.size % DividedIntoThree
+                 end
 
   lines = files.each_slice(slice_number).to_a
 
-  (lines[0].size - lines[-1].size).times { lines[-1].push('') } unless (files.size % 3).zero?
+  max_size = lines.map(&:size).max
+  lines.map! { |it| it.values_at(0...max_size) }
 
   transposed_array = lines.transpose
 
-  spaces = files.max_by { |x| x.size }.size
-
-  transposed_array.each do |i|
-    print i[0] + ' ' * (spaces - i[0].size + 10)
-    print i[1] + ' ' * (spaces - i[1].size + 10)
-    print i[2]
-    print("\n")
+  transposed_array.each do |x|
+    x.each do |y|
+      print y.to_s.ljust(24)
+    end
+    print "\n"
   end
 end
 
@@ -76,15 +77,13 @@ def lists_mode(mode)
   }[mode.to_sym]
 end
 
-if options['a']
-  files = Dir.glob('*', File::FNM_DOTMATCH).sort
-else
-  files = Dir.glob('*').sort
-end
+files = if options['a']
+          Dir.glob('*', File::FNM_DOTMATCH).sort
+        else
+          Dir.glob('*').sort
+        end
 
-if options['r']
-  files = files.reverse
-end
+files = files.reverse if options['r']
 
 if options['l']
   l_option(files)
