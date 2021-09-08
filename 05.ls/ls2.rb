@@ -90,3 +90,4 @@ if options['l']
 else
   print_three_column(files)
 end
+
