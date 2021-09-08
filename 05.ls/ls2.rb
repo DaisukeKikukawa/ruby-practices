@@ -4,15 +4,13 @@ require 'optparse'
 require 'etc'
 options = ARGV.getopts('a', 'l', 'r')
 
-
-
-DividedIntoThree = 3
+DIVIDED_INTO_THREE = 3
 
 def print_three_column(files)
-  slice_number = if (files.size % DividedIntoThree).zero?
-                   files.size / DividedIntoThree + 1
+  slice_number = if (files.size % DIVIDED_INTO_THREE).zero?
+                   files.size / DIVIDED_INTO_THREE + 1
                  else
-                   files.size / DividedIntoThree + files.size % DividedIntoThree
+                   files.size / DIVIDED_INTO_THREE + files.size % DIVIDED_INTO_THREE
                  end
 
   lines = files.each_slice(slice_number).to_a
@@ -79,15 +77,13 @@ def lists_mode(mode)
   }[mode.to_sym]
 end
 
-if options['a']
-  files = Dir.glob('*', File::FNM_DOTMATCH).sort
-else
-  files = Dir.glob('*').sort
-end
+files = if options['a']
+          Dir.glob('*', File::FNM_DOTMATCH).sort
+        else
+          Dir.glob('*').sort
+        end
 
-if options['r']
-  files = files.reverse
-end
+files = files.reverse if options['r']
 
 if options['l']
   l_option(files)
