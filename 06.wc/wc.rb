@@ -5,33 +5,32 @@ options = ARGV.getopts('l')
 
 filenames = ARGV
 
-lines_sum = 0
-words_sum = 0
-bytes_sum = 0
-
 if filenames.count >= 1
+  lines_sum = 0
+  words_sum = 0
+  bytes_sum = 0
   if options['l']
-    filenames.each do |n|
-      file = File.read(n)
-      print file.lines.count.to_s.rjust(8)
-      puts "#{n}"
-      lines_sum += file.lines.count
+    filenames.each do |filename|
+      text = File.read(filename)
+      print text.lines.count.to_s.rjust(8)
+      puts filename.to_s
+      lines_sum += text.lines.count
     end
     if filenames.count > 1
       print lines_sum.to_s.rjust(8)
       puts 'total'
     end
   else
-    filenames.each do |n|
-      file = File.read(n)
-      print file.lines.count.to_s.rjust(8)
-      print file.split(/\s+/).count.to_s.rjust(8)
-      print file.bytesize.to_s.rjust(8)
-      puts "#{n}"
+    filenames.each do |filename|
+      text = File.read(filename)
+      print text.lines.count.to_s.rjust(8)
+      print text.split(/\s+/).count.to_s.rjust(8)
+      print text.bytesize.to_s.rjust(8)
+      puts filename.to_s
 
-      lines_sum += file.lines.count
-      words_sum += file.split(/\s+/).count
-      bytes_sum += file.bytesize
+      lines_sum += text.lines.count
+      words_sum += text.split(/\s+/).count
+      bytes_sum += text.bytesize
     end
     print lines_sum.to_s.rjust(8)
     print words_sum.to_s.rjust(8)
@@ -39,13 +38,12 @@ if filenames.count >= 1
     puts 'total'
   end
 else
-    if options['l']
-      input = $stdin.readlines
-      puts input.size.to_s.rjust(8)
-    else
-      input = $stdin.readlines
-      print input.size.to_s.rjust(8)
-      print input.join.split(/\s+/).count.to_s.rjust(8)
-      puts input.join.bytesize.to_s.rjust(8)
-    end
+  input = $stdin.readlines
+  if options['l']
+    puts input.size.to_s.rjust(8)
+  else
+    print input.size.to_s.rjust(8)
+    print input.join.split(/\s+/).count.to_s.rjust(8)
+    puts input.join.bytesize.to_s.rjust(8)
+  end
 end
