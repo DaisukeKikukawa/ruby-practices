@@ -5,6 +5,20 @@ options = ARGV.getopts('l')
 
 filenames = ARGV
 
+def print_filenames_l_option(filenames)
+  lines_sum = 0
+  filenames.each do |filename|
+    text = File.read(filename)
+    print text.lines.count.to_s.rjust(8)
+    puts filename
+    lines_sum += text.lines.count
+  end
+  if filenames.count > 1
+    print lines_sum.to_s.rjust(8)
+    puts 'total'
+  end
+end
+
 def print_filenames(filenames)
   lines_sum = 0
   words_sum = 0
@@ -36,28 +50,9 @@ def print_input(input)
   puts input.join.bytesize.to_s.rjust(8)
 end
 
-def print_text_lines(filenames)
-  lines_sum = 0
-  filenames.each do |filename|
-    text = File.read(filename)
-    print text.lines.count.to_s.rjust(8)
-    puts filename
-    lines_sum += text.lines.count
-  end
-end
-
-def print_lines_sum(lines_sum)
-  print lines_sum.to_s.rjust(8)
-  puts 'total'
-end
-
 if filenames.count >= 1
-  lines_sum = 0
   if options['l']
-    print_text_lines(filenames)
-    if filenames.count > 1
-      print_lines_sum(lines_sum)
-    end
+    print_filenames_l_option(filenames)
   else
     print_filenames(filenames)
   end
