@@ -34,3 +34,13 @@ class Game
     end
   end
 end
+
+private
+
+def strike_bonus(frame, index)
+  if index < 8 && frame.strike? && @frames[index + 1].strike?
+    frame.score + @frames[index + 1].score + @frames[index + 2].firstshot_score
+  else
+    frame.score + @frames[index + 1].firstshot_and_secondshot_score
+  end
+end
