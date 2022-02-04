@@ -21,4 +21,16 @@ class Game
     end
     @frames = frames.map { |frame| Frame.new(*frame) }
   end
+
+  def calc_game_score
+    @frames.each_with_index.sum do |frame, index|
+      if index < 9 && frame.strike?
+        strike_bonus(frame, index)
+      elsif index < 9 && frame.spare?
+        frame.score + @frames[index + 1].firstshot_score
+      else
+        frame.score
+      end
+    end
+  end
 end
