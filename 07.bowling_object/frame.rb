@@ -10,4 +10,23 @@ class Frame
     @second_shot = Shot.new(second_shot).score
     @third_shot = Shot.new(third_shot).score
   end
+  def score
+    [@first_shot, @second_shot, @third_shot].sum
+  end
+
+  def strike?
+    @first_shot == 10
+  end
+
+  def spare?
+    [@first_shot, @second_shot].sum == 10 && !strike?
+  end
+
+  def firstshot_and_secondshot_score
+    [@first_shot, @second_shot].sum
+  end
+
+  def firstshot_score
+    @first_shot
+  end
 end
