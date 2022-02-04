@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "./shot.rb"
+require_relative './shot'
 
 class Frame
   attr_reader :first_shot, :second_shot, :third_shot
@@ -10,6 +10,7 @@ class Frame
     @second_shot = Shot.new(second_shot).score
     @third_shot = Shot.new(third_shot).score
   end
+
   def score
     [@first_shot, @second_shot, @third_shot].sum
   end
