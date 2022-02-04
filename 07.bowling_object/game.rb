@@ -4,5 +4,6 @@ require_relative 'shot'
 require_relative 'frame'
 
 class Game
-
+def initialize(input)
+end
 end
