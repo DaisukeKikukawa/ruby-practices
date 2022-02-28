@@ -27,7 +27,7 @@ class Game
       if index < 9 && frame.strike?
         strike_bonus(frame, index)
       elsif index < 9 && frame.spare?
-        frame.score + @frames[index + 1].firstshot_score
+        frame.score + @frames[index + 1].first_shot_score
       else
         frame.score
       end
@@ -39,8 +39,8 @@ private
 
 def strike_bonus(frame, index)
   if index < 8 && frame.strike? && @frames[index + 1].strike?
-    frame.score + @frames[index + 1].score + @frames[index + 2].firstshot_score
+    frame.score + @frames[index + 1].score + @frames[index + 2].first_shot_score
   else
-    frame.score + @frames[index + 1].firstshot_and_secondshot_score
+    frame.score + @frames[index + 1].first_shot_and_second_shot_score
   end
 end

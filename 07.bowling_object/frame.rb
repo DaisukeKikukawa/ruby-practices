@@ -23,11 +23,11 @@ class Frame
     [@first_shot, @second_shot].sum == 10 && !strike?
   end
 
-  def firstshot_and_secondshot_score
+  def first_shot_and_second_shot_score
     [@first_shot, @second_shot].sum
   end
 
-  def firstshot_score
+  def first_shot_score
     @first_shot
   end
 end
