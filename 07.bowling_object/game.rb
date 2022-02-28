@@ -4,11 +4,11 @@ require_relative 'shot'
 require_relative 'frame'
 
 class Game
-  def initialize(input)
-    @input = input
+  def initialize(inputs)
+    input = inputs
     frames = []
     one_frame_pinfall = []
-    @input.split(',').each do |shot|
+    input.split(',').each do |shot|
       one_frame_pinfall << shot
       if frames.size < 10
         if shot == 'X' || one_frame_pinfall.size >= 2
