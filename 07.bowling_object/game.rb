@@ -24,11 +24,11 @@ class Game
 
   def calc_game_score
     @frames.each_with_index.sum do |frame, index|
-      next frame.score if index == 10
+      next frame.score if @frames.size == 10
 
-      if index < 9 && frame.strike?
+      if  frame.strike?
         strike_bonus(frame, index)
-      elsif index < 9 && frame.spare?
+      elsif  frame.spare?
         frame.score + @frames[index + 1].first_shot_score
       else
         frame.score
