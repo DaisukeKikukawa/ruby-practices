@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShortFormat
   attr_reader :files
 
