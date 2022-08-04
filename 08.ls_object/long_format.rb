@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'ls_file'
 class LongFormat
   attr_reader :files
@@ -46,4 +48,3 @@ class LongFormat
     puts "total #{count.sum}"
   end
 end
-

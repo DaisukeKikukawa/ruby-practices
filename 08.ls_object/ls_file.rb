@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LsFile
   attr_reader :data
 
@@ -6,9 +8,10 @@ class LsFile
   end
 
   def file_type
-    if data[0][0..2] == ['1', '0', '0']
+    case data[0][0..2]
+    when %w[1 0 0]
       data[0][0..2] = '-'
-    elsif data[0][0..2] == [' ', '4', '0']
+    when [' ', '4', '0']
       data[0][0..2] = 'd'
     end
   end
