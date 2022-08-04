@@ -1,0 +1,33 @@
+class LsFile
+  attr_reader :data
+
+  def initialize(data)
+    @data = data
+  end
+
+  def file_type
+    if data[0][0..2] == ['1', '0', '0']
+      data[0][0..2] = '-'
+    elsif data[0][0..2] == [' ', '4', '0']
+      data[0][0..2] = 'd'
+    end
+  end
+
+  def permission
+    table = {
+      '7' => 'rwx',
+      '6' => 'rw-',
+      '5' => 'r-x',
+      '4' => 'r--',
+      '3' => '-wx',
+      '2' => '-w-',
+      '1' => '--x',
+      '0' => '---'
+    }
+    permission = ''
+    data[0][1..3].each do |c|
+      permission += table[c]
+    end
+    permission
+  end
+end
