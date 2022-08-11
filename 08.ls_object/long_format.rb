@@ -26,9 +26,9 @@ class LongFormat
         stat.ctime.strftime('%m %e %k:%M').gsub(/^0/, ''),
         file
       ]
-      file_type_atribute = LsFile.new(data).file_type
-      file_type_atribute << LsFile.new(data).permission
-      data[0] = file_type_atribute
+      file_type_attribute = LsFile.new(data).file_type
+      file_type_attribute << LsFile.new(data).permission
+      data[0] = file_type_attribute
       puts data.join(' ')
     end
   end
