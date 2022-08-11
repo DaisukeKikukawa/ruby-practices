@@ -23,11 +23,12 @@ class Ls
   def output
     include_dot_file if options[:a]
     r_option if options[:r]
-    if options[:l]
-      LongFormat.new(files).output
+    format = if options[:l]
+      LongFormat.new(files)
     else
-      ShortFormat.new(files).output
+      ShortFormat.new(files)
     end
+    format.output
   end
 
   private
