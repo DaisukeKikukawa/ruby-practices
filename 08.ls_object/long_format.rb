@@ -17,7 +17,7 @@ class LongFormat
     files.each do |file|
       stat = File::Stat.new(file)
 
-      data = [
+      file_data = [
         stat.mode.to_s(8).rjust(6).chars,
         stat.nlink.to_s.rjust(2),
         Etc.getpwuid(File.stat(file).uid).name,
@@ -26,10 +26,10 @@ class LongFormat
         stat.ctime.strftime('%m %e %k:%M').gsub(/^0/, ''),
         file
       ]
-      file_type_attribute = LsFile.new(data).file_type
-      file_type_attribute << LsFile.new(data).permission
-      data[0] = file_type_attribute
-      puts data.join(' ')
+      file_type_attribute = LsFile.new(file_data).file_type
+      file_type_attribute << LsFile.new(file_data).permission
+      file_data[0] = file_type_attribute
+      puts file_data.join(' ')
     end
   end
 
