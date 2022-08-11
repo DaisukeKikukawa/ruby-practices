@@ -21,7 +21,7 @@ class Ls
   end
 
   def output
-    a_option if options[:a]
+    include_dot_file if options[:a]
     r_option if options[:r]
     if options[:l]
       LongFormat.new(files).l_option
@@ -32,7 +32,7 @@ class Ls
 
   private
 
-  def a_option
+  def include_dot_file
     @files = Dir.glob('*', File::FNM_DOTMATCH).sort
   end
 
