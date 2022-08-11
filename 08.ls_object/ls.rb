@@ -24,7 +24,7 @@ class Ls
     include_dot_file if options[:a]
     r_option if options[:r]
     if options[:l]
-      LongFormat.new(files).l_option
+      LongFormat.new(files).output
     else
       ShortFormat.new(files).output
     end

@@ -8,7 +8,7 @@ class LongFormat
     @files = files
   end
 
-  def l_option
+  def output
     total
     l_option_detail
   end
