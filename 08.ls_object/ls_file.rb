@@ -14,10 +14,8 @@ class LsFile
       owner_group,
       file_size,
       creation_time,
-    ].join(' ')
+    ]
   end
-
-  private
 
   def file_type
     convert_to_ftype(@file_stat.ftype)

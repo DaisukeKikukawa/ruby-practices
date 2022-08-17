@@ -16,7 +16,7 @@ class LongFormat
   def l_option_detail
       file_data = files.map do |file|
         ls_file = LsFile.new(file)
-        ls_file.build_data(file)
+        ls_file.build_data.join(' ')
       end
       puts file_data
   end
