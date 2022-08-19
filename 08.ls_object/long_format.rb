@@ -16,12 +16,23 @@ class LongFormat
   def l_option_detail
       file_data = files.map do |file|
         ls_file = LsFile.new(file)
-        ls_file.build_data.join(' ')
+        build_data(ls_file)
       end
       puts file_data
   end
 
   private
+
+  def build_data(ls_file)
+    [
+      ls_file.file_type + ls_file.stat_mode,
+      ls_file.hard_links,
+      ls_file.owner_id,
+      ls_file.owner_group,
+      ls_file.file_size,
+      ls_file.creation_time,
+    ].join(' ')
+  end
 
   def total
     count = []

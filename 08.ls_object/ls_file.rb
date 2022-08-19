@@ -6,17 +6,6 @@ class LsFile
     @file_stat = File.stat(data)
   end
 
-  def build_data
-    [
-      file_type + stat_mode,
-      hard_links,
-      owner_id,
-      owner_group,
-      file_size,
-      creation_time,
-    ]
-  end
-
   def file_type
     convert_to_ftype(@file_stat.ftype)
   end
