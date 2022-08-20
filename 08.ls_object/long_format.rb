@@ -16,14 +16,14 @@ class LongFormat
   def l_option_detail
       file_data = files.map do |file|
         ls_file = LsFile.new(file)
-        build_data(ls_file)
+        assemble_file_infos(ls_file)
       end
       puts file_data
   end
 
   private
 
-  def build_data(ls_file)
+  def assemble_file_infos(ls_file)
     [
       ls_file.file_type + ls_file.stat_mode,
       ls_file.hard_links,
